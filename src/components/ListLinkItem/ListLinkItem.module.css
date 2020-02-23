@@ -1,0 +1,11 @@
+.ListItem {
+  padding: 4px 0;
+}
+
+.Link {
+  color: #333;
+}
+
+.Link:hover {
+  color: #777;
+}

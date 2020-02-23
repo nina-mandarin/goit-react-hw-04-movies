@@ -1,0 +1,23 @@
+.Form {
+  padding: 8px 0;
+}
+
+.Input {
+  padding: 8px 16px;
+  margin-right: 8px;
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+.Input:focus {
+  border-color: #222;
+  box-shadow: 1px 1px 8px 2px rgba(171, 71, 189, 0.3);
+  outline: none;
+}
+
+.Button {
+  padding: 8px 16px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  outline: none;
+}

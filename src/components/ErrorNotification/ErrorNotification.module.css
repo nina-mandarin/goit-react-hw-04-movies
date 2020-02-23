@@ -1,0 +1,11 @@
+.ErrorNotification {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: 24px 16px;
+  min-width: 250px;
+  color: #fff;
+  background-color: #f00;
+  border-bottom-left-radius: 4px;
+}

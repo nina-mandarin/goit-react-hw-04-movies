@@ -1,0 +1,9 @@
+.Layout {
+  min-height: 100vh;
+}
+
+.Content {
+  position: relative;
+  padding: 16px 24px;
+  margin: 0 auto;
+}

@@ -1,0 +1,51 @@
+.BackButton {
+  padding: 8px 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #ab47bc;
+  border: 1px solid #ab47bc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.ContentWrap {
+  display: flex;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.Content {
+  margin-left: 40px;
+}
+
+.Content h4 {
+  margin: 0 0 8px;
+}
+
+.Content p {
+  margin: 0 0 8px;
+}
+
+.Genres span {
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.Genres span:last-of-type {
+  margin-right: 0;
+}
+
+/* Additional information */
+.AdditionalInfo {
+  padding: 24px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.AdditionalInfo h4 {
+  margin: 0 0 12px;
+}
+
+.AdditionalInfoList {
+  margin: 0;
+}
