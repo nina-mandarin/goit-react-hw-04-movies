@@ -12,6 +12,7 @@ export default class MoviesPage extends Component {
     movies: [],
     isLoading: false,
     error: null,
+    isNotFound: false
   };
 
   componentDidMount() {
@@ -40,10 +41,17 @@ export default class MoviesPage extends Component {
 
   renderMovies = searchQuery => {
     this.setState({ isLoading: true });
+    if (this.state.isNotFound) {
+      this.setState({ isNotFound: false });
+    }
 
     return moviesApi.getSearchMovies(searchQuery)
       .then(data => {
         const movies = data.results;
+
+        if (movies.length < 1) {
+          this.setState({ isNotFound: true });
+        }
 
         return this.setState({
           movies: movies,
@@ -55,7 +63,7 @@ export default class MoviesPage extends Component {
   }
 
   render() {
-    const { movies, isLoading, error } = this.state;
+    const { movies, isLoading, error, isNotFound } = this.state;
     const { url } = this.props.match;
 
     return (
@@ -63,6 +71,8 @@ export default class MoviesPage extends Component {
         <SearchBar onSearch={this.handleSearch} />
         {isLoading && <Spinner />}
         {error && <ErrorNotification text={error.message} />}
+
+        {isNotFound && <p>Movie is not found</p>}
 
         {movies.length > 0 &&
           <ul>
