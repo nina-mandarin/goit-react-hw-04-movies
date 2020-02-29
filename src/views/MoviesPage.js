@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import moviesApi from '../services/moviesApi';
 import SearchBar from '../components/SearchBar/SearchBar';
-import ListLinkItem from '../components/ListLinkItem';
 import Spinner from '../components/Spinner';
 import ErrorNotification from '../components/ErrorNotification';
 import getQueryParams from '../utils/get-query-params';
+import LinksListWithRouter from '../components/LinksList';
 
 export default class MoviesPage extends Component {
   state = {
@@ -46,9 +46,7 @@ export default class MoviesPage extends Component {
     }
 
     return moviesApi.getSearchMovies(searchQuery)
-      .then(data => {
-        const movies = data.results;
-
+      .then(movies => {
         if (movies.length < 1) {
           this.setState({ isNotFound: true });
         }
@@ -64,7 +62,6 @@ export default class MoviesPage extends Component {
 
   render() {
     const { movies, isLoading, error, isNotFound } = this.state;
-    const { url } = this.props.match;
 
     return (
       <div>
@@ -74,22 +71,7 @@ export default class MoviesPage extends Component {
 
         {isNotFound && <p>Movie is not found</p>}
 
-        {movies.length > 0 &&
-          <ul>
-            {movies.map(movie => {
-              return (
-                <ListLinkItem
-                  key={movie.id}
-                  to={{
-                    pathname: `${url}/${movie.id}`,
-                    state: { from: this.props.location }
-                  }}
-                  name={movie.title ? movie.title : movie.name}
-                />
-              )
-            })}
-          </ul>
-        }
+        <LinksListWithRouter movies={movies} />
       </div>
     )
   }

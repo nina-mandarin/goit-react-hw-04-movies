@@ -15,9 +15,7 @@ export default class Reviews extends Component {
     this.setState({ isLoading: true });
 
     moviesApi.getMovieReviews(this.props.match.params.movieId)
-      .then(data => {
-        const movieReviews = data.results;
-
+      .then(movieReviews => {
         return this.setState({
           movieReviews: movieReviews,
         })

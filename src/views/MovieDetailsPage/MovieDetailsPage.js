@@ -24,9 +24,7 @@ export default class MovieDetailsPage extends Component {
     this.setState({ isLoading: true });
 
     moviesApi.getMovieDetails(this.props.match.params.movieId)
-      .then(data => {
-        const movieInfo = data;
-
+      .then(movieInfo => {
         return this.setState({
           movieInfo: movieInfo,
         })
@@ -105,8 +103,8 @@ export default class MovieDetailsPage extends Component {
 
               {/* Routes for additional information */}
               <Switch>
-                <Route path={`${routes.movieDetails}/cast`} exact component={Cast} />
-                <Route path={`${routes.movieDetails}/reviews`} exact component={Reviews} />
+                <Route path={`${this.props.match.path}/cast`} exact component={Cast} />
+                <Route path={`${this.props.match.path}/reviews`} exact component={Reviews} />
               </Switch>
             </div>
           </>

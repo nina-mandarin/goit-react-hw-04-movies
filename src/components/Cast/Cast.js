@@ -15,9 +15,7 @@ export default class Cast extends Component {
     this.setState({ isLoading: true });
 
     moviesApi.getMovieCredits(this.props.match.params.movieId)
-      .then(data => {
-        const movieCast = data.cast;
-
+      .then(movieCast => {
         return this.setState({
           movieCast: movieCast,
         })

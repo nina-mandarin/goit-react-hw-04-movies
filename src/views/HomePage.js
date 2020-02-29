@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import Spinner from '../components/Spinner';
-import routes from '../routes';
-import ListLinkItem from '../components/ListLinkItem';
+import LinksListWithRouter from '../components/LinksList';
 import ErrorNotification from '../components/ErrorNotification/ErrorNotification';
 
 import moviesApi from '../services/moviesApi';
@@ -18,9 +17,7 @@ export default class HomePage extends Component {
     this.setState({ isLoading: true });
 
     moviesApi.getTrendingMovies()
-      .then(data => {
-        const movies = data.results;
-
+      .then(movies => {
         return this.setState({
           movies: movies,
         })
@@ -39,22 +36,7 @@ export default class HomePage extends Component {
         {isLoading && <Spinner />}
         {error && <ErrorNotification text={error.message} />}
 
-        {movies.length > 0 &&
-          <ul>
-            {movies.map(movie => {
-              return (
-                <ListLinkItem
-                  key={movie.id}
-                  to={{
-                    pathname: `${routes.movies}/${movie.id}`,
-                    state: { from: routes.home }
-                  }}
-                  name={movie.title ? movie.title : movie.name}
-                />
-              )
-            })}
-          </ul>
-        }
+        <LinksListWithRouter movies={movies} />
       </div>
     )
   }
